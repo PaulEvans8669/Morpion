@@ -33,8 +33,8 @@ public class Grille {
 
     public void setCase(int ligne, int col, int val) {
         if (col >=0 && col <= 2 && ligne >=0 && ligne <= 2 && val >=0 && val <= 2 ) {
-            grille[ligne][col].setContenu(val);
-            listeActions.add(new Action(ligne, col, val));
+            this.grille[ligne][col].setContenu(val);
+            this.listeActions.add(new Action(ligne, col, val));
         }
     }
     

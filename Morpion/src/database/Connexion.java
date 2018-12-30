@@ -16,7 +16,9 @@ import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import Models.partie.Action;
+import Models.partie.Grille;
 import Models.partie.Partie;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -54,7 +56,6 @@ public class Connexion {
     }
     
     public Partie chargerPartie(int idPartie){
-        Partie partie = null;
         try {
             //Données Partie
             String queryPartie = "SELECT * FROM 'Partie' WHERE idPartie = " + idPartie;
@@ -65,22 +66,23 @@ public class Connexion {
             int scoreJ1 = rsPartie.getInt(4);
             int scoreJ2 = rsPartie.getInt(5);
             rsPartie.close();
-            partie = new Partie(idPartie, j1, j2, scoreJ1, scoreJ2);
+            Partie partie = new Partie(idPartie, j1, j2, scoreJ1, scoreJ2);
             
             //Données Cases
             String queryCases = "SELECT * FROM 'Case' WHERE idPartie = " + idPartie;
             Statement stmtCases = connection.createStatement();
             ResultSet rsCases = stmtCases.executeQuery(queryCases);
             while(rsCases.next()){
-                partie.getGrille().setCase(rsCases.getInt(1), rsCases.getInt(2), rsCases.getInt(3));
+                System.out.println(rsCases.getInt(1)+" "+rsCases.getInt(2)+" "+rsCases.getInt(3));
+                partie.getGrille().setCase(rsCases.getInt(3), rsCases.getInt(2), rsCases.getInt(4));
             }
             rsCases.close();
-
+            return partie;
         } catch (SQLException ex) {
             Logger.getLogger(Connexion.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-            return partie;
+            return null;
     }
     
     public boolean sauvegarderPartie(Partie partie){
@@ -121,38 +123,58 @@ public class Connexion {
                                 + " WHERE idPartie = " + idPartie + " AND posX = " + x + " AND posY = " + y;
                         Statement stmtCase = connection.createStatement();
                         stmtCase.executeUpdate(queryCase);
+                        stmtCase.close();
                 }
             }
-            stmtPartie.close();
             
             ArrayList<Action> liste = partie.getGrille().getListeAction();
-            
-            String queryCoup = "insert into Replay values";
+            supprimerReplay(idPartie);
             for(int i = 0 ; i < liste.size() ; i++){
                 Action a = liste.get(i);
-                queryCoup += "("
+                String queryCoup = "insert into Replay values ("
                         +i+","
                         +idPartie+","
                         +a.getPosX()+","
                         +a.getPosY()+","
                         +a.getValeur()+
-                        ")";
-                if (i != liste.size()-1) {
-                    queryCoup+=", ";
-                }else{
-                    queryCoup+=";";
-                }
+                        ");";
+                Statement stmtCoup = connection.createStatement();
+                stmtCoup.executeUpdate(queryCoup);
+                stmtCoup.close();
             }
-            System.out.println(queryCoup);
-            Statement stmtCoup = connection.createStatement();
-            stmtCoup.executeUpdate(queryCoup);
-            stmtCoup.close();
+            JOptionPane.showMessageDialog(null, "Partie sauvergardée avec succès.");
             
         } catch (SQLException ex) {
             Logger.getLogger(Connexion.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Erreur lors de la sauvegarde de la partie.");
             return false;
         }
         return true;
+    }
+    
+    private void supprimerReplay(int idPartie) throws SQLException{
+            Statement stmt = connection.createStatement();
+            String query= "DELETE FROM 'Replay' WHERE idPartie = " + idPartie;
+            stmt.executeUpdate(query);
+    }
+    
+    public void nouvelleManche(Partie partie){
+        try {
+            int idPartie = partie.getIdPartie();
+            supprimerReplay(idPartie);
+            Statement stmt = connection.createStatement();
+            String queryCases = "UPDATE 'Case' SET contenu = 0 WHERE idPartie = "+idPartie;
+            stmt.executeUpdate(queryCases);
+            String queryPartie = "UPDATE 'Partie' SET "
+                    + "scoreJoueur1 = "+partie.getScoreJoueur1()+","
+                    + "scoreJoueur2 = "+partie.getScoreJoueur2()+" "
+                    + "WHERE idPartie = "+idPartie;
+            System.out.println(queryPartie);
+            stmt.executeUpdate(queryPartie);
+        } catch (SQLException ex) {
+            Logger.getLogger(Connexion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
 
     private boolean ajouterNouvellePartie(Partie partie) {

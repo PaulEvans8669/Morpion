@@ -37,6 +37,7 @@ public class ControllerLoadGame implements ActionListener{
             if(key != -1){
                 Connexion co = new Connexion();
                 Partie partie = co.chargerPartie(key);
+                System.out.println(partie);
                 Window win = loadGameView.getWin();
                 win.setContentPane(new Game(win,partie));
                 win.pack();

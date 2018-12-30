@@ -3,21 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file://iutbg-smbetu.univ-lyon1.fr/homes/Bureau/Methodo/morpion---java/Morpion/src/Controller/ControllerLoadGame.java</file>
-            <file>file://iutbg-smbetu.univ-lyon1.fr/homes/Bureau/Methodo/morpion---java/Morpion/src/database/Connexion.java</file>
-            <file>file://iutbg-smbetu.univ-lyon1.fr/homes/Bureau/Methodo/morpion---java/Morpion/src/Models/partie/Case.java</file>
-            <file>file://iutbg-smbetu.univ-lyon1.fr/homes/Bureau/Methodo/morpion---java/Morpion/src/Models/partie/Action.java</file>
-            <file>file://iutbg-smbetu.univ-lyon1.fr/homes/Bureau/Methodo/morpion---java/Morpion/src/Models/partie/Grille.java</file>
-            <file>file://iutbg-smbetu.univ-lyon1.fr/homes/Bureau/Methodo/morpion---java/Morpion/src/View/LoadGame.java</file>
-            <file>file://iutbg-smbetu.univ-lyon1.fr/homes/Bureau/Methodo/morpion---java/Morpion/src/View/InitFrame.java</file>
-            <file>file://iutbg-smbetu.univ-lyon1.fr/homes/Bureau/Methodo/morpion---java/Morpion/src/Models/partie/Partie.java</file>
-            <file>file://iutbg-smbetu.univ-lyon1.fr/homes/Bureau/Methodo/morpion---java/Morpion/src/View/Game.java</file>
-            <file>file://iutbg-smbetu.univ-lyon1.fr/homes/Bureau/Methodo/morpion---java/Morpion/src/Controller/ControllerNewGame.java</file>
-            <file>file://iutbg-smbetu.univ-lyon1.fr/homes/Bureau/Methodo/morpion---java/Morpion/src/morpion/Morpion.java</file>
-            <file>file://iutbg-smbetu.univ-lyon1.fr/homes/Bureau/Methodo/morpion---java/Morpion/src/Controller/ControllerGame.java</file>
-            <file>file://iutbg-smbetu.univ-lyon1.fr/homes/Bureau/Methodo/morpion---java/Morpion/src/View/Window.java</file>
-            <file>file://iutbg-smbetu.univ-lyon1.fr/homes/Bureau/Methodo/morpion---java/Morpion/src/View/NewGame.java</file>
-            <file>file://iutbg-smbetu.univ-lyon1.fr/homes/Bureau/Methodo/morpion---java/Morpion/src/View/Menu.java</file>
+            <file>file:/C:/Users/Paul/Desktop/Morpion/Morpion/Morpion/src/View/Game.java</file>
+            <file>file:/C:/Users/Paul/Desktop/Morpion/Morpion/Morpion/src/View/Menu.java</file>
+            <file>file:/C:/Users/Paul/Desktop/Morpion/Morpion/Morpion/src/Controller/ControllerLoadGame.java</file>
+            <file>file:/C:/Users/Paul/Desktop/Morpion/Morpion/Morpion/src/Controller/ControllerGame.java</file>
+            <file>file:/C:/Users/Paul/Desktop/Morpion/Morpion/Morpion/src/Models/partie/Partie.java</file>
+            <file>file:/C:/Users/Paul/Desktop/Morpion/Morpion/Morpion/src/Models/partie/Grille.java</file>
+            <file>file:/C:/Users/Paul/Desktop/Morpion/Morpion/Morpion/src/morpion/Morpion.java</file>
+            <file>file:/C:/Users/Paul/Desktop/Morpion/Morpion/Morpion/src/Models/partie/Case.java</file>
+            <file>file:/C:/Users/Paul/Desktop/Morpion/Morpion/Morpion/src/Models/partie/Action.java</file>
+            <file>file:/C:/Users/Paul/Desktop/Morpion/Morpion/Morpion/src/View/LoadGame.java</file>
+            <file>file:/C:/Users/Paul/Desktop/Morpion/Morpion/Morpion/src/Controller/ControllerNewGame.java</file>
+            <file>file:/C:/Users/Paul/Desktop/Morpion/Morpion/Morpion/src/database/Connexion.java</file>
         </group>
     </open-files>
 </project-private>

@@ -5,6 +5,8 @@
  */
 package Models.partie;
 
+import database.Connexion;
+
 /**
  *
  * @author p1704450
@@ -38,8 +40,6 @@ public class Partie {
     public void setIdPartie(int idPartie) {
         this.idPartie = idPartie;
     }
-    
-    
 
     public int getIdPartie() {
         return idPartie;
@@ -80,13 +80,23 @@ public class Partie {
         }
         return 0;
     }
+    
+    public void nouvelleManche(String gagnantManchePrec){
+        if(gagnantManchePrec.equals(joueur1)){
+            scoreJoueur1++;
+        }else{
+            scoreJoueur2++;
+        }
+        
+        grille = new Grille();
+        Connexion co = new Connexion();
+        co.nouvelleManche(this);
+        
+    }
 
     @Override
     public String toString() {
         return "Partie{" + "idPartie=" + idPartie + ", joueur1=" + joueur1 + ", joueur2=" + joueur2 + ", scoreJoueur1=" + scoreJoueur1 + ", scoreJoueur2=" + scoreJoueur2 + ", grille=" + grille + '}';
-    }
-
-    
-    
+    }    
     
 }

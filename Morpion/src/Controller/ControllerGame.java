@@ -44,19 +44,24 @@ public class ControllerGame implements ActionListener{
             win.pack();
         }else{
             //Bouton de case de jeu
-            int ligne = cellId/3;
-            int col = cellId%3;
-            Partie partie = gameView.getPartie();
-            int numJoueur = partie.getGrille().getNbCasesRemplies()%2+1;
-            String nomJoueur = numJoueur == 1 ? partie.getJoueur1() : partie.getJoueur2();
-            partie.getGrille().setCase(ligne, col, numJoueur);
-            gameView.getListeBoutonsJeu().get(cellId).setText(nomJoueur);
-            String nomProchainJoueur = numJoueur == 2 ? partie.getJoueur1() : partie.getJoueur2();
-            gameView.setLabelNomJoueurTour(nomProchainJoueur);
-            
-            if(partie.getGagnant() != 0){
-                String nomGagnant = partie.getGagnant() == 1 ? partie.getJoueur1() : partie.getJoueur2();
-                JOptionPane.showMessageDialog(null, nomGagnant + " remporte cette manche!");
+            if(gameView.getListeBoutonsJeu().get(cellId).getText().equals("")){
+                int ligne = cellId/3;
+                int col = cellId%3;
+                Partie partie = gameView.getPartie();
+                int numJoueur = partie.getGrille().getNbCasesRemplies()%2+1;
+                String nomJoueur = numJoueur == 1 ? partie.getJoueur1() : partie.getJoueur2();
+                partie.getGrille().setCase(ligne, col, numJoueur);
+                gameView.getListeBoutonsJeu().get(cellId).setText(nomJoueur);
+                String nomProchainJoueur = numJoueur == 2 ? partie.getJoueur1() : partie.getJoueur2();
+                gameView.setLabelNomJoueurTour(nomProchainJoueur);
+                System.out.println(partie.getGrille().toString());
+
+                if(partie.getGagnant() != 0){
+                    String nomGagnant = partie.getGagnant() == 1 ? partie.getJoueur1() : partie.getJoueur2();
+                    JOptionPane.showMessageDialog(null, nomGagnant + " remporte cette manche!");
+                    partie.nouvelleManche(nomGagnant);
+                    gameView.nouvelleManche(partie);
+                }
             }
         }
                 

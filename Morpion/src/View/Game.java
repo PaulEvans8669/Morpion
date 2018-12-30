@@ -43,20 +43,36 @@ public class Game extends javax.swing.JPanel {
     private void loadBoutonsJeu(){
         listeBoutonsJeu = new ArrayList<>();
         listeBoutonsJeu.add(jButton1);
-        listeBoutonsJeu.add(jButton5);
         listeBoutonsJeu.add(jButton6);
+        listeBoutonsJeu.add(jButton5);
         listeBoutonsJeu.add(jButton7);
-        listeBoutonsJeu.add(jButton8);
         listeBoutonsJeu.add(jButton9);
+        listeBoutonsJeu.add(jButton8);
         listeBoutonsJeu.add(jButton10);
-        listeBoutonsJeu.add(jButton11);
         listeBoutonsJeu.add(jButton12);
+        listeBoutonsJeu.add(jButton11);
+        
+        for(int i = 0; i<9;i++){
+            int valCase = partie.getGrille().getCase(i%3, i/3).getContenu();
+            if(valCase != 0){
+                String nomJoueur = valCase == 1 ? partie.getJoueur1() : partie.getJoueur2();
+                listeBoutonsJeu.get(i).setText(nomJoueur);
+            }
+        }
     }
     
     private void setListenersBoutonsJeu(){
         for(int i = 0 ; i < listeBoutonsJeu.size(); i++){
             listeBoutonsJeu.get(i).addActionListener(new ControllerGame(this,i));
         }
+    }
+    
+    public void nouvelleManche(Partie partie){
+        for(JButton boutonJeu : listeBoutonsJeu){
+            boutonJeu.setText("");
+        }
+        jLabel3.setText("Score: "+partie.getScoreJoueur1());
+        jLabel4.setText("Score: "+partie.getScoreJoueur2());
     }
     
     public ArrayList<JButton> getListeBoutonsJeu(){
