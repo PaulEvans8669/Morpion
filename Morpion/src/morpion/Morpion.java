@@ -44,11 +44,6 @@ public class Morpion {
             
             connexion.sauvegarderPartie(partie2);
             
-            partie2.getGrille().setCase(0, 0, 0);
-            partie2.getGrille().setCase(1, 0, 1);
-            partie2.getGrille().setCase(2, 0, 0);
-            partie2.getGrille().setCase(0, 1, 2);
-            partie2.getGrille().setCase(1, 1, 0);
             
             System.out.println(connexion.sauvegarderPartie(partie2));
             */

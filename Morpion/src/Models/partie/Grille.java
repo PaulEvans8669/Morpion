@@ -6,8 +6,6 @@
 package Models.partie;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import javafx.util.Pair;
 
 /**
  *
@@ -20,7 +18,7 @@ public class Grille {
 
     public Grille(){ 
         this.listeActions = new ArrayList();
-        this.grille = new Case[3][3]; //[ligne][colonne]
+        this.grille = new Case[3][3]; //[ligne][colonne], [y][x]
         for(int i = 0 ; i < 3 ; i++){
             for(int j = 0 ; j < 3 ; j++){
                 this.grille[i][j]=new Case();
@@ -33,10 +31,10 @@ public class Grille {
         return grille;
     }
 
-    public void setCase(int col, int ligne, int val) {
+    public void setCase(int ligne, int col, int val) {
         if (col >=0 && col <= 2 && ligne >=0 && ligne <= 2 && val >=0 && val <= 2 ) {
-            this.grille[ligne][col].setContenu(val);
-            listeActions.add(new Action(col, ligne, val));
+            grille[ligne][col].setContenu(val);
+            listeActions.add(new Action(ligne, col, val));
         }
     }
     
@@ -54,7 +52,7 @@ public class Grille {
         }
         return true;
     }
-    
+
     public int verifLigne(int ligne){
         int val = this.grille[ligne][0].getContenu();
         for(int j = 0 ; j < 3 ; j++){
@@ -104,5 +102,22 @@ public class Grille {
     public Case getCase(int col, int lig){
         return grille[lig][col];
     }  
+    
+    /*
+    Permet de savoir qui doit jouer
+    Si le nombre de cases est pair, le joueur 1 joue
+    Sinon, le joueur 2 joue.
+    */
+    public int getNbCasesRemplies(){
+        int nb = 0;
+        for(int y = 0; y<3 ; y++){
+            for(int x = 0; x<3; x++){
+                if(grille[y][x].getContenu() != 0){
+                    nb++;
+                }
+            }
+        }
+        return nb;
+    }
     
 }

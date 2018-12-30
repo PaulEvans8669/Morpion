@@ -12,7 +12,7 @@ package Models.partie;
 public class Action {
     int posX, posY, valeur;
 
-    public Action(int posX, int posY, int valeur) {
+    public Action(int posY, int posX, int valeur) {
         this.posX = posX;
         this.posY = posY;
         this.valeur = valeur;

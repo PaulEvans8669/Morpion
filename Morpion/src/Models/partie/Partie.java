@@ -16,6 +16,7 @@ public class Partie {
     private int scoreJoueur1;
     private int scoreJoueur2;
     private Grille grille;
+    
 
     public Partie(String joueur1, String joueur2) { //Cas d'une nouvelle nouvelle partie
         this.joueur1 = joueur1;
@@ -63,6 +64,21 @@ public class Partie {
     
     public Grille getGrille() {
         return grille;
+    }
+    
+    public int getGagnant(){
+        int valVerif;
+        valVerif = grille.verifDiagonaleDescendanteDroite();
+        if(valVerif != 0){ return valVerif;}
+        valVerif = grille.verifDiagonaleMontanteDroite();
+        if(valVerif != 0){ return valVerif;}
+        for(int i = 0; i<3 ; i++){
+            valVerif = grille.verifLigne(i);
+            if(valVerif != 0){ return valVerif;}
+            valVerif = grille.verifColonne(i);
+            if(valVerif != 0){ return valVerif;}
+        }
+        return 0;
     }
 
     @Override
