@@ -8,6 +8,7 @@ package Controller;
 import Models.partie.Partie;
 import View.Game;
 import View.Menu;
+import View.Replay;
 import View.Window;
 import database.Connexion;
 import java.awt.event.ActionEvent;
@@ -22,6 +23,7 @@ public class ControllerGame implements ActionListener{
 
     private Game gameView;
     private int cellId;
+    private static Window windowReplay;
     
     public ControllerGame(Game gameView){
         this.gameView = gameView;
@@ -31,9 +33,10 @@ public class ControllerGame implements ActionListener{
         this.gameView = gameView;
         this.cellId = cellId;
     }
+    
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource().equals(gameView.getjButton2())){
+        if(e.getSource().equals(gameView.getjButton4())){
             //Bouton Save
             Connexion co = new Connexion();
             co.sauvegarderPartie(gameView.getPartie());
@@ -42,6 +45,11 @@ public class ControllerGame implements ActionListener{
             Window win = gameView.getWin();
             win.setContentPane(new Menu(win));
             win.pack();
+        }else if(e.getSource().equals(gameView.getjButton2())){
+            //Bouton replay
+            windowReplay = new Window();
+            windowReplay.setContentPane(new Replay(gameView.getPartie()));
+            windowReplay.setVisible(true);
         }else{
             //Bouton de case de jeu
             if(gameView.getListeBoutonsJeu().get(cellId).getText().equals("")){
@@ -56,11 +64,13 @@ public class ControllerGame implements ActionListener{
                 gameView.setLabelNomJoueurTour(nomProchainJoueur);
 
                 if(partie.getGagnant() != 0){
+                    windowReplay.dispose();
                     String nomGagnant = partie.getGagnant() == 1 ? partie.getJoueur1() : partie.getJoueur2();
                     JOptionPane.showMessageDialog(null, nomGagnant + " remporte cette manche !");
                     partie.nouvelleManche(nomGagnant);
                     gameView.nouvelleManche(partie);
                 }else if(partie.getGrille().grillePleine()){
+                    windowReplay.dispose();
                     JOptionPane.showMessageDialog(null, "Match nul !");
                     partie.nouvelleManche();
                     gameView.nouvelleManche(partie);
