@@ -169,7 +169,6 @@ public class Connexion {
                     + "scoreJoueur1 = "+partie.getScoreJoueur1()+","
                     + "scoreJoueur2 = "+partie.getScoreJoueur2()+" "
                     + "WHERE idPartie = "+idPartie;
-            System.out.println(queryPartie);
             stmt.executeUpdate(queryPartie);
         } catch (SQLException ex) {
             Logger.getLogger(Connexion.class.getName()).log(Level.SEVERE, null, ex);
@@ -188,7 +187,6 @@ public class Connexion {
             stmt.setInt(3, 0);
             stmt.setInt(4, 0);
             stmt.executeUpdate();
-            System.out.println("OK");
             
             int idPartie = getLastGameId();
             

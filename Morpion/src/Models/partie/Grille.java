@@ -38,7 +38,7 @@ public class Grille {
         }
     }
     
-    public ArrayList getListeAction(){
+    public ArrayList<Action> getListeAction(){
         return this.listeActions;
     }
     
