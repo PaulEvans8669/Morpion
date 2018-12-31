@@ -60,7 +60,7 @@ public class Grille {
                 return 0;
             }
         }
-        return this.grille[ligne][0].getContenu();
+        return val;
     }    
     
     public int verifColonne(int col){
@@ -70,21 +70,28 @@ public class Grille {
                 return 0;
             }
         }
-        return this.grille[0][col].getContenu();
+        return val;
     }
 
     public int verifDiagonaleMontanteDroite(){
-        if (this.grille[2][0].getContenu()==0 || this.grille[1][1].getContenu()==0 || this.grille[0][2].getContenu()==0) {
-            return 0;
+        int val = this.grille[2][0].getContenu();
+        for(int i = 0 ; i<3;i++){
+            if(this.grille[2-i][i].getContenu() == 0 || this.grille[2-i][i].getContenu() != val){
+                return 0;
+            }
         }
-        return  this.grille[2][0].getContenu();
+        return val;
     }
     
     public int verifDiagonaleDescendanteDroite(){
-        if (this.grille[0][0].getContenu()==0 || this.grille[1][1].getContenu()==0 || this.grille[2][2].getContenu()==0) {
-            return 0;
+
+        int val = this.grille[0][0].getContenu();
+        for(int i = 0 ; i<3;i++){
+            if(this.grille[i][i].getContenu() == 0 || this.grille[i][i].getContenu() != val){
+                return 0;
+            }
         }
-        return  this.grille[0][0].getContenu();
+        return val;
     }
 
     @Override

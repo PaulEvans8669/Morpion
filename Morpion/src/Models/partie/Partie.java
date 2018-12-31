@@ -93,6 +93,12 @@ public class Partie {
         co.nouvelleManche(this);
         
     }
+    
+    public void nouvelleManche(){
+        grille = new Grille();
+        Connexion co = new Connexion();
+        co.nouvelleManche(this);
+    }
 
     @Override
     public String toString() {

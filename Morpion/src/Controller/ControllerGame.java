@@ -54,12 +54,15 @@ public class ControllerGame implements ActionListener{
                 gameView.getListeBoutonsJeu().get(cellId).setText(nomJoueur);
                 String nomProchainJoueur = numJoueur == 2 ? partie.getJoueur1() : partie.getJoueur2();
                 gameView.setLabelNomJoueurTour(nomProchainJoueur);
-                System.out.println(partie.getGrille().toString());
 
                 if(partie.getGagnant() != 0){
                     String nomGagnant = partie.getGagnant() == 1 ? partie.getJoueur1() : partie.getJoueur2();
-                    JOptionPane.showMessageDialog(null, nomGagnant + " remporte cette manche!");
+                    JOptionPane.showMessageDialog(null, nomGagnant + " remporte cette manche !");
                     partie.nouvelleManche(nomGagnant);
+                    gameView.nouvelleManche(partie);
+                }else if(partie.getGrille().grillePleine()){
+                    JOptionPane.showMessageDialog(null, "Match nul !");
+                    partie.nouvelleManche();
                     gameView.nouvelleManche(partie);
                 }
             }
