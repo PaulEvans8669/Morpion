@@ -88,7 +88,7 @@ public class LoadGame extends javax.swing.JPanel
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Charger une partie");
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/retour.png"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Style/img/retour.png"))); // NOI18N
         jButton1.setToolTipText("");
         jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
@@ -102,14 +102,13 @@ public class LoadGame extends javax.swing.JPanel
 
         jScrollPane1.setViewportView(jList1);
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/btnEffacer.PNG"))); // NOI18N
-        jButton2.setText("jButton2");
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Style/img/btnEffacer.PNG"))); // NOI18N
         jButton2.setBorderPainted(false);
         jButton2.setContentAreaFilled(false);
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.setFocusPainted(false);
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/btnChJouer.PNG"))); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Style/img/btnChJouer.PNG"))); // NOI18N
         jButton3.setBorderPainted(false);
         jButton3.setContentAreaFilled(false);
         jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -147,7 +146,7 @@ public class LoadGame extends javax.swing.JPanel
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton3)
                     .addComponent(jButton2))
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

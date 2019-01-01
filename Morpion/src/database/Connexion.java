@@ -73,7 +73,6 @@ public class Connexion {
             Statement stmtCases = connection.createStatement();
             ResultSet rsCases = stmtCases.executeQuery(queryCases);
             while(rsCases.next()){
-                System.out.println(rsCases.getInt(1)+" "+rsCases.getInt(2)+" "+rsCases.getInt(3));
                 partie.getGrille().setCase(rsCases.getInt(3), rsCases.getInt(2), rsCases.getInt(4));
             }
             rsCases.close();
