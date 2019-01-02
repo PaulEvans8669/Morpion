@@ -13,6 +13,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
 import Models.partie.Partie;
+import Style.Sound.CustomSound;
+import Style.Sound.SoundPlayer;
 
 /**
  *
@@ -22,18 +24,21 @@ public class ControllerLoadGame implements ActionListener{
 
     private HashMap<Integer,String> listeParties;
     private LoadGame loadGameView;
+    private SoundPlayer soundPlayer;
     
     public ControllerLoadGame(LoadGame loadGame, HashMap<Integer,String> listeParties) {
+        soundPlayer = new SoundPlayer();
         this.loadGameView = loadGame;
         this.listeParties = listeParties;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        String nomPartie = loadGameView.getjList1().getSelectedValue();
+        int key = getKeyFromValue(nomPartie);
         if(e.getSource().equals(loadGameView.getjButton3())){
             //Jouer partie
-            String nomPartie = loadGameView.getjList1().getSelectedValue();
-            int key = getKeyFromValue(nomPartie);
+            soundPlayer.playSound(CustomSound.PAGE);
             if(key != -1){
                 Connexion co = new Connexion();
                 Partie partie = co.chargerPartie(key);
@@ -41,11 +46,8 @@ public class ControllerLoadGame implements ActionListener{
                 win.setContentPane(new Game(win,partie));
                 win.pack();
             }
-        }else 
-        if(e.getSource().equals(loadGameView.getjButton2())){
+        }else if(e.getSource().equals(loadGameView.getjButton2())){
             //Supprimer enregistrement
-            String nomPartie = loadGameView.getjList1().getSelectedValue();
-            int key = getKeyFromValue(nomPartie);
             if(key != -1){
                 Connexion co = new Connexion();
                 co.supprimerPartie(key);

@@ -43,7 +43,7 @@
           <Color blue="99" green="66" red="ff" type="rgb"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Style/img/load.gif"/>
+          <Image iconType="3" name="/Style/img/originalLoad.gif"/>
         </Property>
       </Properties>
     </Component>

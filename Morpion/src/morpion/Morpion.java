@@ -5,6 +5,8 @@
  */
 package morpion;
 
+import Style.Sound.CustomSound;
+import Style.Sound.SoundPlayer;
 import View.InitFrame;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -23,13 +25,14 @@ public class Morpion {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
         InitFrame IF = new InitFrame();
         IF.setVisible(true);
         Connexion co = new Connexion();
         IF.dispose();
         Window window = new Window();
         window.setVisible(true);
+        SoundPlayer sp = new SoundPlayer();
+        sp.playSoundLoop(CustomSound.BACKGROUND_MUSIC);
         
         try {
             DriverManager.registerDriver(new org.sqlite.JDBC());

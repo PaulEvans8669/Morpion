@@ -12,7 +12,11 @@ import Models.partie.Partie;
 import Style.Font.CustomFont;
 import Style.Font.FontLoader;
 import java.awt.Font;
+import java.awt.event.WindowAdapter;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -22,6 +26,7 @@ public class Game extends javax.swing.JPanel {
 
     private Window win;
     private Partie partie;
+    private Window windowReplay;
     
     private ArrayList<JButton> listeBoutonsJeu;
     
@@ -49,12 +54,20 @@ public class Game extends javax.swing.JPanel {
         jLabel4.setText(""+this.partie.getScoreJoueur2());
         jButton2.addActionListener(new ControllerGame(this));
         jButton3.addActionListener(new ControllerGame(this));
+        jButton4.addActionListener(new ControllerGame(this));
         jButton3.addMouseListener(new ControllerHover(pencil22, pencil28));
         jButton2.addMouseListener(new ControllerHover(pencil22, pencil28));
         jButton4.addMouseListener(new ControllerHover(pencil22, pencil28));
         setListenersBoutonsJeu();
         
-        
+    }
+    
+    public Window getWindowReplay(){
+        return windowReplay;
+    }
+    
+    public void setWindowReplay(Window windowReplay){
+        this.windowReplay = windowReplay;
     }
     
     private void loadBoutonsJeu(){
@@ -71,9 +84,10 @@ public class Game extends javax.swing.JPanel {
         
         for(int i = 0; i<9;i++){
             int valCase = partie.getGrille().getCase(i%3, i/3).getContenu();
-            if(valCase != 0){
-                String nomJoueur = valCase == 1 ? partie.getJoueur1() : partie.getJoueur2();
-                listeBoutonsJeu.get(i).setText(nomJoueur);
+            if(valCase == 1){
+                listeBoutonsJeu.get(i).setIcon( new ImageIcon(getClass().getResource("/Style/img/cercle.png")));
+            }else if(valCase == 2){
+                listeBoutonsJeu.get(i).setIcon( new ImageIcon(getClass().getResource("/Style/img/croix.png")));
             }
         }
     }
@@ -112,7 +126,7 @@ public class Game extends javax.swing.JPanel {
         return jButton3;
     }
     
-    public Object getjButton4() {
+    public JButton getjButton4() {
         return jButton4;
     }
     

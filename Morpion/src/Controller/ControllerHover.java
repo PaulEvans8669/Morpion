@@ -7,6 +7,8 @@ package Controller;
 
 import Style.Font.CustomFont;
 import Style.Font.FontLoader;
+import Style.Sound.CustomSound;
+import Style.Sound.SoundPlayer;
 import java.awt.Font;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -20,8 +22,10 @@ public class ControllerHover implements MouseListener {
 
     private Font baseFont;
     private Font hoverFont;
+    private SoundPlayer soundPlayer;
 
     public ControllerHover(Font baseFont, Font hoverFont) {
+        soundPlayer = new SoundPlayer();
         this.baseFont = baseFont;
         this.hoverFont = hoverFont;
     }
@@ -43,6 +47,7 @@ public class ControllerHover implements MouseListener {
     @Override
     public void mouseEntered(MouseEvent e) {
         if(e.getSource() instanceof JButton){
+            soundPlayer.playSound(CustomSound.HOVER);
             JButton source = (JButton)e.getSource();
             source.setFont(hoverFont);
         }

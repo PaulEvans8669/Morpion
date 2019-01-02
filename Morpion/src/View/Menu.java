@@ -8,6 +8,8 @@ package View;
 import Controller.ControllerHover;
 import Style.Font.CustomFont;
 import Style.Font.FontLoader;
+import Style.Sound.CustomSound;
+import Style.Sound.SoundPlayer;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -26,11 +28,13 @@ public class Menu extends javax.swing.JPanel {
     private Font origami;
     private Font pencil36;
     private Font pencil48;
+    private SoundPlayer soundPlayer;
     
     /**
      * Creates new form Menus
      */
     public Menu(Window win) {
+        soundPlayer = new SoundPlayer();
         this.win = win;
         origami = new FontLoader().loadFont(CustomFont.ORIGAMI, 48);
         pencil36 = new FontLoader().loadFont(CustomFont.PENCIL, 36);
@@ -126,20 +130,20 @@ public class Menu extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+        soundPlayer.playSound(CustomSound.PAGE);
         win.setContentPane(new NewGame(win));
         win.pack();
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-
+        soundPlayer.playSound(CustomSound.PAGE);
         SwingUtilities.getWindowAncestor(this).dispose();
 
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
+        soundPlayer.playSound(CustomSound.PAGE);
         win.setContentPane(new LoadGame(win));
         win.pack();
         

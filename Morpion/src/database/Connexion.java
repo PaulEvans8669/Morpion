@@ -76,27 +76,39 @@ public class Connexion {
                 partie.getGrille().setCase(rsCases.getInt(3), rsCases.getInt(2), rsCases.getInt(4));
             }
             rsCases.close();
+            
+            //Données Actions
+            String queryActions = "SELECT * FROM 'Replay' WHERE idPartie = " + idPartie+" ORDER BY numCoup";
+            Statement stmtActions = connection.createStatement();
+            ResultSet rsActions = stmtActions.executeQuery(queryActions);
+            while(rsActions.next()){
+                partie.getGrille().ajouterAction(new Action(rsActions.getInt(4), rsActions.getInt(3), rsActions.getInt(5)));
+            }
+            rsActions.close();
             return partie;
         } catch (SQLException ex) {
             Logger.getLogger(Connexion.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
             return null;
     }
     
     public boolean sauvegarderPartie(Partie partie){
         int idPartie = partie.getIdPartie();
+        boolean success = false;
         try {
             if(gameIsInDatabase(idPartie)){
                 //game exists in DB
-                return mettreAJourPartie(partie);
+                success =  mettreAJourPartie(partie);                
+                return success;
             }else{
                 //game doesn't exist in DB
-                return ajouterNouvellePartie(partie);
+                success =  ajouterNouvellePartie(partie);
+                return success;
             }
                 
             } catch (SQLException ex) {
                 Logger.getLogger(Connexion.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println("Erreur lors de la sauvegarde de la partie.");
             }
         return false;
     }
@@ -141,11 +153,9 @@ public class Connexion {
                 stmtCoup.executeUpdate(queryCoup);
                 stmtCoup.close();
             }
-            JOptionPane.showMessageDialog(null, "Partie sauvergardée avec succès.");
             
         } catch (SQLException ex) {
             Logger.getLogger(Connexion.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, "Erreur lors de la sauvegarde de la partie.");
             return false;
         }
         return true;

@@ -12,6 +12,9 @@ import database.Connexion;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import Models.partie.Partie;
+import Style.Sound.CustomSound;
+import Style.Sound.SoundPlayer;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -20,8 +23,10 @@ import Models.partie.Partie;
 public class ControllerNewGame implements ActionListener{
 
     private NewGame game;
+    private SoundPlayer soundPlayer;
     
     public ControllerNewGame(NewGame game) {
+        soundPlayer = new SoundPlayer();
         this.game = game;
     }
     
@@ -30,12 +35,20 @@ public class ControllerNewGame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if(this.game.verifNoms()){
+            soundPlayer.playSound(CustomSound.PAGE);
             Partie partie = new Partie(this.game.getjTextField1(), this.game.getjTextField2());
-            Connexion co = new Connexion();
-            co.sauvegarderPartie(partie);
+            Thread t = new Thread(new Runnable(){
+                public void run(){
+                    Connexion co = new Connexion();
+                    co.sauvegarderPartie(partie);
+                }
+            });
+            t.start();
             Window win = this.game.getWin();
             win.setContentPane(new Game(win,partie));
             win.pack();
+        }else{
+            JOptionPane.showMessageDialog(null, "Veuillez rentrer un nom par joueur");
         }
     }
     

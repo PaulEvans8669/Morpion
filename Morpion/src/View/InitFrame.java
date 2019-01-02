@@ -41,7 +41,7 @@ public class InitFrame extends javax.swing.JFrame {
         setUndecorated(true);
 
         jLabel1.setBackground(new java.awt.Color(255, 102, 153));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Style/img/load.gif"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Style/img/originalLoad.gif"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
