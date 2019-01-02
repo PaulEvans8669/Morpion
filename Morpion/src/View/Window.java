@@ -30,12 +30,15 @@ public final class Window extends JFrame
         this.setTitle("Morpion");
         this.setContentPane(new Menu(this));
         this.setPreferredSize(this.getContentPane().getPreferredSize());
-        this.pack();
+        this.setResizable(false);
         
         Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
-        int x = (int) ((dimension.getWidth() - this.getWidth()) / 2);
-        int y = (int) ((dimension.getHeight() - this.getHeight()) / 2);
+        int x = (int) ((dimension.getWidth() - 500) / 2);
+        int y = (int) ((dimension.getHeight() - 400) / 2);
         this.setLocation(x, y);
+        
+        this.pack();
+        
     }
     
 }

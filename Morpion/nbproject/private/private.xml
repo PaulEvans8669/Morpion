@@ -5,15 +5,25 @@
         <group>
             <file>file:/C:/Users/Paul/Desktop/Morpion/Morpion/Morpion/src/View/Game.java</file>
             <file>file:/C:/Users/Paul/Desktop/Morpion/Morpion/Morpion/src/View/Menu.java</file>
+            <file>file:/C:/Users/Paul/Desktop/Morpion/Morpion/Morpion/src/Style/Sound/CustomSound.java</file>
             <file>file:/C:/Users/Paul/Desktop/Morpion/Morpion/Morpion/src/Controller/ControllerLoadGame.java</file>
             <file>file:/C:/Users/Paul/Desktop/Morpion/Morpion/Morpion/src/Controller/ControllerGame.java</file>
-            <file>file:/C:/Users/Paul/Desktop/Morpion/Morpion/Morpion/src/Models/partie/Partie.java</file>
             <file>file:/C:/Users/Paul/Desktop/Morpion/Morpion/Morpion/src/Models/partie/Grille.java</file>
-            <file>file:/C:/Users/Paul/Desktop/Morpion/Morpion/Morpion/src/morpion/Morpion.java</file>
+            <file>file:/C:/Users/Paul/Desktop/Morpion/Morpion/Morpion/src/Controller/ControllerReplay.java</file>
             <file>file:/C:/Users/Paul/Desktop/Morpion/Morpion/Morpion/src/Models/partie/Case.java</file>
+            <file>file:/C:/Users/Paul/Desktop/Morpion/Morpion/Morpion/src/Style/Font/FontLoader.java</file>
+            <file>file:/C:/Users/Paul/Desktop/Morpion/Morpion/Morpion/src/View/Replay.java</file>
             <file>file:/C:/Users/Paul/Desktop/Morpion/Morpion/Morpion/src/Models/partie/Action.java</file>
-            <file>file:/C:/Users/Paul/Desktop/Morpion/Morpion/Morpion/src/View/LoadGame.java</file>
+            <file>file:/C:/Users/Paul/Desktop/Morpion/Morpion/Morpion/src/Controller/ControllerHover.java</file>
             <file>file:/C:/Users/Paul/Desktop/Morpion/Morpion/Morpion/src/Controller/ControllerNewGame.java</file>
+            <file>file:/C:/Users/Paul/Desktop/Morpion/Morpion/Morpion/src/Style/Font/CustomFont.java</file>
+            <file>file:/C:/Users/Paul/Desktop/Morpion/Morpion/Morpion/src/Models/partie/Partie.java</file>
+            <file>file:/C:/Users/Paul/Desktop/Morpion/Morpion/Morpion/src/morpion/Morpion.java</file>
+            <file>file:/C:/Users/Paul/Desktop/Morpion/Morpion/Morpion/src/View/NewGame.java</file>
+            <file>file:/C:/Users/Paul/Desktop/Morpion/Morpion/Morpion/src/View/Window.java</file>
+            <file>file:/C:/Users/Paul/Desktop/Morpion/Morpion/Morpion/src/Style/Sound/SoundPlayer.java</file>
+            <file>file:/C:/Users/Paul/Desktop/Morpion/Morpion/Morpion/src/View/LoadGame.java</file>
+            <file>file:/C:/Users/Paul/Desktop/Morpion/Morpion/Morpion/src/View/InitFrame.java</file>
             <file>file:/C:/Users/Paul/Desktop/Morpion/Morpion/Morpion/src/database/Connexion.java</file>
         </group>
     </open-files>

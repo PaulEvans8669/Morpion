@@ -30,11 +30,14 @@ public class Grille {
     public Case[][] getGrille() {
         return grille;
     }
+    
+    public void ajouterAction(Action action){
+        listeActions.add(action);
+    }
 
     public void setCase(int ligne, int col, int val) {
         if (col >=0 && col <= 2 && ligne >=0 && ligne <= 2 && val >=0 && val <= 2 ) {
             this.grille[ligne][col].setContenu(val);
-            this.listeActions.add(new Action(ligne, col, val));
         }
     }
     

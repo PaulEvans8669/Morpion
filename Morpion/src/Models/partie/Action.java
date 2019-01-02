@@ -29,6 +29,11 @@ public class Action {
     public int getValeur() {
         return valeur;
     }
+
+    @Override
+    public String toString() {
+        return "Action{" + "posX=" + posX + ", posY=" + posY + ", valeur=" + valeur + '}';
+    }
     
     
     

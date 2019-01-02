@@ -5,8 +5,18 @@
  */
 package View;
 
+import Controller.ControllerHover;
+import Style.Font.CustomFont;
+import Style.Font.FontLoader;
+import Style.Sound.CustomSound;
+import Style.Sound.SoundPlayer;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
+import javax.swing.ImageIcon;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -15,13 +25,24 @@ import javafx.beans.Observable;
 public class Menu extends javax.swing.JPanel {
 
     private Window win;
+    private Font origami;
+    private Font pencil36;
+    private Font pencil48;
+    private SoundPlayer soundPlayer;
     
     /**
      * Creates new form Menus
      */
     public Menu(Window win) {
+        soundPlayer = new SoundPlayer();
         this.win = win;
+        origami = new FontLoader().loadFont(CustomFont.ORIGAMI, 48);
+        pencil36 = new FontLoader().loadFont(CustomFont.PENCIL, 36);
+        pencil48 = new FontLoader().loadFont(CustomFont.PENCIL, 48);
         initComponents();
+        jButton1.addMouseListener(new ControllerHover(pencil36, pencil48));
+        jButton2.addMouseListener(new ControllerHover(pencil36, pencil48));
+        jButton3.addMouseListener(new ControllerHover(pencil36, pencil48));
     }
 
     /**
@@ -37,12 +58,23 @@ public class Menu extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
-        jLabel1.setFont(new java.awt.Font("Arial", 0, 48)); // NOI18N
+        setMinimumSize(new java.awt.Dimension(500, 400));
+        setName(""); // NOI18N
+        setPreferredSize(new java.awt.Dimension(500, 400));
+        setLayout(null);
+
+        jLabel1.setFont(origami);
+        jLabel1.setForeground(new java.awt.Color(255, 51, 51));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("MORPION");
+        jLabel1.setToolTipText("");
+        add(jLabel1);
+        jLabel1.setBounds(120, 50, 270, 80);
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/btnJouer.png"))); // NOI18N
+        jButton1.setFont(pencil36);
+        jButton1.setText("Jouer");
         jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -57,8 +89,11 @@ public class Menu extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
+        add(jButton1);
+        jButton1.setBounds(125, 143, 250, 60);
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/btnCharger.png"))); // NOI18N
+        jButton2.setFont(pencil36);
+        jButton2.setText("Charger une partie");
         jButton2.setActionCommand("CHARGER PARTIE");
         jButton2.setBorderPainted(false);
         jButton2.setContentAreaFilled(false);
@@ -69,8 +104,11 @@ public class Menu extends javax.swing.JPanel {
                 jButton2ActionPerformed(evt);
             }
         });
+        add(jButton2);
+        jButton2.setBounds(60, 220, 380, 60);
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/btnQuitter.png"))); // NOI18N
+        jButton3.setFont(pencil36);
+        jButton3.setText("Quitter");
         jButton3.setBorderPainted(false);
         jButton3.setContentAreaFilled(false);
         jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -83,52 +121,29 @@ public class Menu extends javax.swing.JPanel {
                 jButton3ActionPerformed(evt);
             }
         });
+        add(jButton3);
+        jButton3.setBounds(130, 300, 250, 60);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(138, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(jButton2)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(135, 135, 135))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(89, 89, 89)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2)
-                .addGap(18, 18, 18)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(104, Short.MAX_VALUE))
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Style/img/papier.jpg"))); // NOI18N
+        add(jLabel2);
+        jLabel2.setBounds(0, 0, 500, 400);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+        soundPlayer.playSound(CustomSound.PAGE);
         win.setContentPane(new NewGame(win));
         win.pack();
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-
-        System.exit(0);
+        soundPlayer.playSound(CustomSound.PAGE);
+        SwingUtilities.getWindowAncestor(this).dispose();
 
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
+        soundPlayer.playSound(CustomSound.PAGE);
         win.setContentPane(new LoadGame(win));
         win.pack();
         
@@ -140,5 +155,6 @@ public class Menu extends javax.swing.JPanel {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
