@@ -18,6 +18,7 @@ import java.util.logging.Logger;
 import Models.partie.Action;
 import Models.partie.Grille;
 import Models.partie.Partie;
+import java.io.File;
 import javax.swing.JOptionPane;
 
 /**
@@ -29,16 +30,16 @@ public class Connexion {
     private static Connection connection = null;
     
     public Connexion(){
-        try {
-            this.connect();
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
-            Logger.getLogger(Connexion.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        this.connect();
     }
         
-    private void connect() throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException{
+    private void connect(){
         String fileURL = "jdbc:sqlite:src/database/dbMorpion.sqlite";
-        connection = DriverManager.getConnection(fileURL);
+        try {
+            connection = DriverManager.getConnection(fileURL);
+        } catch (SQLException ex) {
+            System.out.println("Erreur de connexion a la base de donnees!");
+        }
     }
     
     public void supprimerPartie(int idPartie){

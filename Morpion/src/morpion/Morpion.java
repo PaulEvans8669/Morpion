@@ -25,6 +25,11 @@ public class Morpion {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        try {
+            DriverManager.registerDriver(new org.sqlite.JDBC());
+        } catch (SQLException ex) {
+            Logger.getLogger(Morpion.class.getName()).log(Level.SEVERE, null, ex);
+        }
         InitFrame IF = new InitFrame();
         IF.setVisible(true);
         Connexion co = new Connexion();
@@ -33,23 +38,6 @@ public class Morpion {
         window.setVisible(true);
         SoundPlayer sp = new SoundPlayer();
         sp.playSoundLoop(CustomSound.BACKGROUND_MUSIC);
-        
-        try {
-            DriverManager.registerDriver(new org.sqlite.JDBC());
-        } catch (SQLException ex) {
-            Logger.getLogger(Morpion.class.getName()).log(Level.SEVERE, null, ex);
-        }
-            /*
-            Connexion connexion = new Connexion();
-          
-            
-            Partie partie2 = new Partie("Quentin", "Imaddex");
-            
-            connexion.sauvegarderPartie(partie2);
-            
-            
-            System.out.println(connexion.sauvegarderPartie(partie2));
-            */
             
     }
     

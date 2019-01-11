@@ -66,6 +66,10 @@ public class Game extends javax.swing.JPanel {
         return windowReplay;
     }
     
+    public void setReplayWindow(Window replayWindow){
+        this.windowReplay = replayWindow;
+    }
+    
     public void setWindowReplay(Window windowReplay){
         this.windowReplay = windowReplay;
     }
@@ -105,6 +109,7 @@ public class Game extends javax.swing.JPanel {
         jLabel3.setText(""+partie.getScoreJoueur1());
         jLabel4.setText(""+partie.getScoreJoueur2());
     }
+   
     
     public ArrayList<JButton> getListeBoutonsJeu(){
         return listeBoutonsJeu;

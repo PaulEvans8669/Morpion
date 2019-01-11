@@ -56,6 +56,7 @@ public class Menu extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -91,6 +92,11 @@ public class Menu extends javax.swing.JPanel {
         });
         add(jButton1);
         jButton1.setBounds(125, 143, 250, 60);
+
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Style/img/son.png"))); // NOI18N
+        jButton4.setText("jButton4");
+        add(jButton4);
+        jButton4.setBounds(440, 340, 50, 50);
 
         jButton2.setFont(pencil36);
         jButton2.setText("Charger une partie");
@@ -137,9 +143,7 @@ public class Menu extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        soundPlayer.playSound(CustomSound.PAGE);
-        SwingUtilities.getWindowAncestor(this).dispose();
-
+        System.exit(0);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -154,6 +158,7 @@ public class Menu extends javax.swing.JPanel {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables

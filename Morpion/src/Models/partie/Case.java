@@ -17,6 +17,10 @@ public class Case {
     public Case() {
         this.contenu = 0;
     }
+    
+    public Case(int contenu) {
+        this.contenu = contenu;
+    }
 
     public int getContenu() {
         return contenu;

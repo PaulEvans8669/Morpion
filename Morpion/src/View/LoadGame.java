@@ -117,7 +117,7 @@ public class LoadGame extends javax.swing.JPanel
             }
         });
         add(jButton1);
-        jButton1.setBounds(30, 60, 71, 46);
+        jButton1.setBounds(30, 60, 71, 38);
 
         jScrollPane1.setViewportView(jList1);
 
@@ -131,7 +131,7 @@ public class LoadGame extends javax.swing.JPanel
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.setFocusPainted(false);
         add(jButton2);
-        jButton2.setBounds(30, 310, 210, 32);
+        jButton2.setBounds(30, 310, 210, 22);
 
         jButton3.setFont(pencil32);
         jButton3.setText("Jouer la partie");
@@ -140,7 +140,7 @@ public class LoadGame extends javax.swing.JPanel
         jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton3.setFocusPainted(false);
         add(jButton3);
-        jButton3.setBounds(260, 310, 210, 32);
+        jButton3.setBounds(260, 310, 210, 22);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Style/img/papier.jpg"))); // NOI18N
         add(jLabel2);

@@ -6,6 +6,7 @@
 package Style.Sound;
 
 import Style.Font.FontLoader;
+import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.InputStream;
 import javax.sound.sampled.AudioInputStream;
@@ -22,7 +23,8 @@ public class SoundPlayer {
     public void playSound (CustomSound customSound){
         try {
             InputStream is = SoundPlayer.class.getResourceAsStream(customSound.toString());
-            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(is);
+            InputStream bufferedIn = new BufferedInputStream(is);
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(bufferedIn);
             Clip clip = AudioSystem.getClip();
             clip.open(audioInputStream);
             clip.start();
@@ -34,7 +36,8 @@ public class SoundPlayer {
     public void playSoundLoop(CustomSound customSound){
         try {
             InputStream is = SoundPlayer.class.getResourceAsStream(customSound.toString());
-            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(is);
+            InputStream bufferedIn = new BufferedInputStream(is);
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(bufferedIn);
             Clip clip = AudioSystem.getClip();
             clip.open(audioInputStream);
             clip.loop(Clip.LOOP_CONTINUOUSLY);

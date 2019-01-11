@@ -66,6 +66,7 @@ public class ControllerGame implements ActionListener{
             Window replayWindow = gameView.getWindowReplay();
             if(replayWindow != null){
                 replayWindow.dispose();
+                gameView.setWindowReplay(null);
             }
         }else if(e.getSource().equals(gameView.getjButton2())){
             //Bouton replay
@@ -109,6 +110,7 @@ public class ControllerGame implements ActionListener{
                     Window replayWindow = gameView.getWindowReplay();
                     if(replayWindow != null){
                         replayWindow.dispose();
+                        gameView.setWindowReplay(null);
                     }
                     Thread t = new Thread(new Runnable(){
                         public void run(){
@@ -124,6 +126,7 @@ public class ControllerGame implements ActionListener{
                     Window replayWindow = gameView.getWindowReplay();
                     if(replayWindow != null){
                         replayWindow.dispose();
+                        gameView.setWindowReplay(null);
                     }
                     Thread t = new Thread(new Runnable(){
                         public void run(){

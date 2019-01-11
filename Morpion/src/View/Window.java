@@ -7,6 +7,7 @@ package View;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 /**
@@ -28,6 +29,7 @@ public final class Window extends JFrame
         
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setTitle("Morpion");
+        this.setUndecorated(true);
         this.setContentPane(new Menu(this));
         this.setPreferredSize(this.getContentPane().getPreferredSize());
         this.setResizable(false);
@@ -36,6 +38,9 @@ public final class Window extends JFrame
         int x = (int) ((dimension.getWidth() - 500) / 2);
         int y = (int) ((dimension.getHeight() - 400) / 2);
         this.setLocation(x, y);
+        
+        ImageIcon img = new ImageIcon("src/Style/img/cercle.png");
+        this.setIconImage(img.getImage());
         
         this.pack();
         
