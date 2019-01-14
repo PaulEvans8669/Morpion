@@ -6,6 +6,7 @@
 package View;
 
 import Controller.ControllerHover;
+import Controller.ControllerMenu;
 import Style.Font.CustomFont;
 import Style.Font.FontLoader;
 import Style.Sound.CustomSound;
@@ -16,6 +17,7 @@ import java.awt.Graphics2D;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.SwingUtilities;
 
 /**
@@ -43,8 +45,32 @@ public class Menu extends javax.swing.JPanel {
         jButton1.addMouseListener(new ControllerHover(pencil36, pencil48));
         jButton2.addMouseListener(new ControllerHover(pencil36, pencil48));
         jButton3.addMouseListener(new ControllerHover(pencil36, pencil48));
+        jButton5.addMouseListener(new ControllerHover(pencil36, pencil48));
+        jButton1.addActionListener(new ControllerMenu(this));
+        jButton2.addActionListener(new ControllerMenu(this));
+        jButton3.addActionListener(new ControllerMenu(this));
+        jButton5.addActionListener(new ControllerMenu(this));
     }
 
+    public Window getParentWindow(){
+        return win;
+    }
+        public JButton getBoutonJouer(){
+        return jButton1;
+    } 
+    
+    public JButton getBoutonCharger(){
+        return jButton5;
+    }
+    
+    public JButton getBoutonStats(){
+        return jButton2;
+    }
+    
+    public JButton getBoutonQuitter(){
+        return jButton3;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -59,6 +85,7 @@ public class Menu extends javax.swing.JPanel {
         jButton4 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(500, 400));
@@ -72,7 +99,7 @@ public class Menu extends javax.swing.JPanel {
         jLabel1.setText("MORPION");
         jLabel1.setToolTipText("");
         add(jLabel1);
-        jLabel1.setBounds(120, 50, 270, 80);
+        jLabel1.setBounds(120, 20, 270, 80);
 
         jButton1.setFont(pencil36);
         jButton1.setText("Jouer");
@@ -85,13 +112,8 @@ public class Menu extends javax.swing.JPanel {
         jButton1.setMinimumSize(new java.awt.Dimension(143, 23));
         jButton1.setName(""); // NOI18N
         jButton1.setPreferredSize(new java.awt.Dimension(143, 23));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
         add(jButton1);
-        jButton1.setBounds(125, 143, 250, 60);
+        jButton1.setBounds(130, 100, 250, 60);
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Style/img/son.png"))); // NOI18N
         jButton4.setText("jButton4");
@@ -99,19 +121,14 @@ public class Menu extends javax.swing.JPanel {
         jButton4.setBounds(440, 340, 50, 50);
 
         jButton2.setFont(pencil36);
-        jButton2.setText("Charger une partie");
+        jButton2.setText("Statistiques");
         jButton2.setActionCommand("CHARGER PARTIE");
         jButton2.setBorderPainted(false);
         jButton2.setContentAreaFilled(false);
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.setFocusPainted(false);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
         add(jButton2);
-        jButton2.setBounds(60, 220, 380, 60);
+        jButton2.setBounds(60, 240, 390, 60);
 
         jButton3.setFont(pencil36);
         jButton3.setText("Quitter");
@@ -122,36 +139,24 @@ public class Menu extends javax.swing.JPanel {
         jButton3.setMaximumSize(new java.awt.Dimension(143, 23));
         jButton3.setMinimumSize(new java.awt.Dimension(143, 23));
         jButton3.setPreferredSize(new java.awt.Dimension(143, 23));
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
         add(jButton3);
-        jButton3.setBounds(130, 300, 250, 60);
+        jButton3.setBounds(130, 310, 250, 60);
+
+        jButton5.setFont(pencil36);
+        jButton5.setText("Charger une partie");
+        jButton5.setActionCommand("CHARGER PARTIE");
+        jButton5.setBorderPainted(false);
+        jButton5.setContentAreaFilled(false);
+        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton5.setFocusPainted(false);
+        add(jButton5);
+        jButton5.setBounds(60, 170, 390, 60);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Style/img/papier.jpg"))); // NOI18N
         add(jLabel2);
         jLabel2.setBounds(0, 0, 500, 400);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        soundPlayer.playSound(CustomSound.PAGE);
-        win.setContentPane(new NewGame(win));
-        win.pack();
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        soundPlayer.playSound(CustomSound.PAGE);
-        win.setContentPane(new LoadGame(win));
-        win.pack();
-        
-    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -159,6 +164,7 @@ public class Menu extends javax.swing.JPanel {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables

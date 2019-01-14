@@ -5,6 +5,7 @@
  */
 package database;
 
+import Models.Player;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -88,7 +89,7 @@ public class Connexion {
             rsActions.close();
             return partie;
         } catch (SQLException ex) {
-            Logger.getLogger(Connexion.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Erreur chargement");
         }
             return null;
     }
@@ -259,6 +260,62 @@ public class Connexion {
             return listePartie;
         } catch (SQLException ex) {
             Logger.getLogger(Connexion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public ArrayList<Player> loadJoueurs() {
+        try {
+            ArrayList<Player> listeJoueurs = new ArrayList();
+            String query = "SELECT nomJoueur1, nomJoueur2, scoreJoueur1, scoreJoueur2 from `Partie`";
+            Statement stmt = connection.createStatement();
+            ResultSet rsPartie = stmt.executeQuery(query);
+            while(rsPartie.next()){
+                String nomJ1 = rsPartie.getString(1);
+                String nomJ2 = rsPartie.getString(2);
+                int scoreJ1 = rsPartie.getInt(3);
+                int scoreJ2 = rsPartie.getInt(4);
+                Player p1 = listePlayerContainsPlayer(listeJoueurs, nomJ1);
+                if(!nomJ1.equals("")){
+                    if(p1 != null){
+                        p1.setNbParties(p1.getNbParties()+1);
+                        p1.setNbManchesTot(p1.getNbManchesTot()+scoreJ1+scoreJ2);
+                        p1.setNbManchesGag(p1.getNbManchesGag()+scoreJ1);
+                    }else{
+                        p1 = new Player(nomJ1);
+                        p1.setNbParties(1);
+                        p1.setNbManchesTot(scoreJ1+scoreJ2);
+                        p1.setNbManchesGag(scoreJ1);
+                        listeJoueurs.add(p1);
+                    }
+                }
+                Player p2 = listePlayerContainsPlayer(listeJoueurs, nomJ2);
+                if(p2 != null){
+                    p2.setNbParties(p2.getNbParties()+1);
+                    p2.setNbManchesTot(p2.getNbManchesTot()+scoreJ2+scoreJ1);
+                    p2.setNbManchesGag(p2.getNbManchesGag()+scoreJ2);
+                }else{
+                    p2 = new Player(nomJ2);
+                    p2.setNbParties(1);
+                    p2.setNbManchesTot(scoreJ2+scoreJ1);
+                    p2.setNbManchesGag(scoreJ2);
+                    listeJoueurs.add(p2);
+                }
+            }
+            rsPartie.close();
+            stmt.close();
+            return listeJoueurs;
+        } catch (SQLException ex) {
+            Logger.getLogger(Connexion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    private Player listePlayerContainsPlayer(ArrayList<Player> listePlayer, String playerName){
+        for(Player p : listePlayer){
+            if(p.getName().equals(playerName)){
+                return p;
+            }
         }
         return null;
     }
